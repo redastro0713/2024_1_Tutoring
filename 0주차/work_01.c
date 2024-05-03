@@ -1,43 +1,72 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-int stringCompare(const char* str1, const char* str2)
+int main()
 {
-    char s1,s2; //변수를 상수처럼 취급받았으니까 대소문자 통일을 위한 변수
+   char msg[50];
+   char ans;
 
-   for(int i = 0; i<100; i++) 
+   int count = 0;
+   int aNum = 0;
+   int imsg[50] = {0,};
+   int cnt[50] = {0,};
+   int i1, i2, i3, i4;
+   int max, maxNum = 0;
+
+   scanf("%s", msg);
+
+   while (msg[count] != 0)
    {
-        s1 = str1[i]; 
-        s2 = str2[i];
-
-        if (s1 >= 'a' && s1 <='z') s1 -= 32; //s1이 소문자면 대문자로
-        if (s2 >= 'a' && s2 <='z') s2 -= 32; //s2이 소문자면 대문자로
-
-        if (s1 < s2) //두 문자열의 아스키코드가 s1이 더 작으면 더 일찍오는 알파벳이므로 바로 리턴값(-1)을 받는다
-            return -1;
-        else if (s1 > s2) //두 문자열의 아스키코드가 s2이 더 작으면 더 일찍오는 알파벳이므로 바로 리턴값(1)을 받는다
-            return 1;
+      count++;
    }
-   return 0; //for문에서 부등호 관계가 계속 성립하지 않는다는 것은 두 문자열이 같을 경우이므로 리턴값 0을 받는다
-}
 
-int main() 
-{
-    char string1[100] = {0};
-    char string2[100] = {0};
+   for (int i = 0; i < count; i++) 
+   {
+      if (msg[i] >= 'a' && msg[i] <= 'z') msg[i] -= 32;
+   }
+   
+   for (int i = 0; i < count; i++) imsg[i] = (int)msg[i];
 
-    printf("첫 번째 문자열을 입력하시오 : ");
-    scanf("%s", string1);
-    printf("두 번째 문자열을 입력하시오 : ");
-    scanf("%s", string2);
+   for ( i1 = 0; i1 < count; i1++) {
+      for  (i2 = 0; i2 < i1; i2++) {
+         if (imsg[i1] == imsg[i2]) {
+            cnt[i2]++;
+            break;
+         }
+      }
 
-    if (stringCompare(string1, string2) < 0) {
-        printf("첫 번째 문자열이 먼저 온다.\n");
-    }
-    else if (stringCompare(string1, string2) > 0) {
-        printf("두 번째 문자열이 먼저 온다.\n");
-    }
-    else{
-        printf("같은 문자열이다.\n");
-    }
+      if (i2 == i1) cnt[i2]++;
+   }
+   
+
+   max = cnt[0];
+   for (i3 = 0; i3 < count; i3++) {
+
+      if (max < cnt[i3])
+      {
+         max = cnt[i3];
+         maxNum = i3;
+      }
+      
+   }
+
+   for (i4 = 0; i4 < count; i4++)
+   {
+      if (max == cnt[i4])
+      {
+         aNum++;
+      }
+   }
+
+   if (aNum == 1)
+   {
+      printf("%c", (char)imsg[maxNum]);
+   }
+   else
+   {
+      printf("?");
+   }
+   
+   
+   return 0;
 }
