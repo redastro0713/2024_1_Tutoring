@@ -8,7 +8,7 @@ char star(int y, int x, int n)
 {
     if (n == 3)
     {
-        arr[y][x] = '*';
+        arr[y][x] = '*'; //기본 삼각형 모양 만들기
         arr[y + 1][x - 1] = '*';
         arr[y + 1][x + 1] = '*';
         arr[y  + 2][x - 2] = '*';
@@ -20,9 +20,9 @@ char star(int y, int x, int n)
     }
     else
     {
-        star(y ,x ,n / 2);
-        star(y + n / 2 ,x - n / 2 ,n / 2);
-        star(y + n / 2 ,x + n / 2 ,n / 2);
+        star(y ,x ,n / 2); //절반으로 나누고
+        star(y + n / 2 ,x - n / 2 ,n / 2); //그 왼쪽 모서리 부분과
+        star(y + n / 2 ,x + n / 2 ,n / 2); //오른쪽 모서리 부분에서 다시 재귀
 
     }
 

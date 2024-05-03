@@ -15,9 +15,9 @@ int main()
 
         for (int i = 0; i < 100; i++)
         {
-            if (number[i] >= 48 && number[i] <= 57)
+            if (number[i] >= 48 && number[i] <= 57) //0의 아스키 코드 48, 9의 아스키 코드 57
             {
-                printf("%c", number[i]);
+                printf("%c", number[i]); //일때만 출력
             }
         }
 
@@ -25,7 +25,7 @@ int main()
         printf("\n");
 
         
-            if (number[0] == 48 && number[1] == 0 && number[2] == 0)
+            if (number[0] == 48 && number[1] == 48 && number[2] == 48)
             {
                 break;
             }
